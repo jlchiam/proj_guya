@@ -1,7 +1,6 @@
 {
   "name": "proj_guya",
   "version": "1.0.0",
-  "description": "",
   "main": "main.js",
   "dependencies": {
     "cors": "^2.8.5",
@@ -10,7 +9,6 @@
     "express-openid-connect": "^2.7.1",
     "mysql": "^2.18.1"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/jlchiam/proj_guya/issues"
   },
-  "homepage": "https://github.com/jlchiam/proj_guya#readme"
+  "homepage": "https://github.com/jlchiam/proj_guya#readme",
+  "description": ""
 }
