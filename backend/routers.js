@@ -21,11 +21,6 @@ router.use(
 );
 
 /*
-router.get("/home", (request, response) => {
-    response.send("Welcome to Dev Toolkit 2!");
-})
-*/
-/*
 router.get('/', (request, response) => {
     response.send(request.oidc.isAuthenticated() ? 'Logged in' : 'Logged out')
   });
@@ -34,40 +29,6 @@ router.get('/', (request, response) => {
       response.send(JSON.stringify(request.oidc.user));
   });
 */
-
-/*
-router.get("/users/all", (request, response) => {
-  // let users = database.get_all_users(); //users variable is only defined in this area, for the other router.get with let users, it is considered another area
-  // response.send(users);
-  connection.query("select * from user", (errors, results) => {
-      if (errors) {
-          console.log(errors);
-          response.status(500).send("Something went wrong...");
-      } else {
-          response.status(200).send(results);
-      }
-  });
-});
-*/
-
-router.post("/user/add", (request, response) => {
-  connection.query(
-      `INSERT INTO user (first_name, last_name, email) 
-      VALUES ("${request.body.fname}", 
-      "${request.body.lname}", 
-      "${request.body.email}")`, 
-      (errors,results)=>{
-        if (errors) {
-          console.log(errors);
-          response.status(500).send("Something went wrong...");
-        } else {
-          response.status(200).send("User added to the database!");
-        }
-      }
-    );
-
-});
-
 
   router.get("/Workprofile/all", (request, response) => {
     connection.query("SELECT * FROM Workprofile", (errors, results) => {
@@ -108,7 +69,8 @@ router.get("/Userprofile/byId", (request, response) => {
 });
 
 
-
+// can't do this. didn't do form. End point from postman works.
+/*
 router.post("/Userprofile/add", (request, response) => {
    connection.query(
       `INSERT INTO Userprofile (first_name, last_name,
@@ -138,6 +100,23 @@ router.post("/Userprofile/add", (request, response) => {
     );
 
 });
+*/
+/*
+router.get("/Userprofile/searchbyid", (request, response) => {
+  connection.query(
+      `SELECT * FROM Userprofile WHERE user_id=${request.query.user_id}`, 
+      (errors,results)=>{
+        if (errors) {
+          console.log(errors);
+          response.status(500).send("Something went wrong...");
+        } else {
+          response.status(200).send("User found!");
+        }
+      }
+    );
+
+});
+*/
 
 
 module.exports = { router };
