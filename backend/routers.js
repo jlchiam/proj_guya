@@ -91,17 +91,33 @@ router.get("/Userprofile/all", (request, response) => {
   });
 });
 
+router.get("/Userprofile/byId", (request, response) => {
+  connection.query(`SELECT * FROM Userprofile WHERE user_id=${request.query.user_id}`, 
+    (errors, results) => {
+      if (errors) {
+          console.log(errors);
+          response.status(500).send("Something went wrong...");
+      } else {
+        if (results.length == 0) {
+            response.status(404).send("user not found");
+        } else {
+            response.status(200).send(results);
+        }
+      }
+  });
+});
+
+
 
 router.post("/Userprofile/add", (request, response) => {
    connection.query(
       `INSERT INTO Userprofile (first_name, last_name,
-        email_address, work_profile_id, monthly_income, 
+        email, work_profile_id, monthly_income, 
         risk_appetite, retire_by,
-        answer1, answer2, answer3, answer4,
-        savings, spendings, investments) 
+        answer1, answer2, answer3, answer4) 
       values ("${request.body.first_name}", 
       "${request.body.last_name}", 
-      "${request.body.email_address}",
+      "${request.body.email}",
       "${request.body.work_profile_id}",
       "${request.body.monthly_income}",
       "${request.body.risk_appetite}",
@@ -109,10 +125,7 @@ router.post("/Userprofile/add", (request, response) => {
       "${request.body.answer1}",
       "${request.body.answer2}",
       "${request.body.answer3}",
-      "${request.body.answer4}",
-      "${request.body.savings}",
-      "${request.body.spendings}",
-      "${request.body.investments}",
+      "${request.body.answer4}"
       )`,
       (errors,results)=>{
         if (errors) {
