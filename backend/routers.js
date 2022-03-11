@@ -101,7 +101,7 @@ router.post("/Userprofile/add", (request, response) => {
 
 });
 
-/*
+
 router.get("/Userprofile/searchbyid", (request, response) => {
   connection.query(
       `SELECT * FROM Userprofile WHERE user_id=${request.query.user_id}`, 
@@ -116,7 +116,7 @@ router.get("/Userprofile/searchbyid", (request, response) => {
     );
 
 });
-*/
+
 
 
 module.exports = { router };

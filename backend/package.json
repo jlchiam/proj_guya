@@ -2,6 +2,9 @@
   "name": "proj_guya",
   "version": "1.0.0",
   "main": "main.js",
+  "script": {
+    "start": "node main.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",

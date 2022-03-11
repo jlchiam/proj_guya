@@ -58,7 +58,7 @@ s1.addEventListener("load", () => {
     //let code = "<option id='0'>--choosen</option>";
     let code="";
     data.forEach((datapoint) => {
-      code += "profile_name: ${datapoint.profile_name}";
+      code += "${datapoint.profile_name}";
     });
     $(".ddWorkProfile").html(code);
   });
